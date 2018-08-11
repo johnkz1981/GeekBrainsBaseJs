@@ -1,0 +1,11 @@
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<script>
+  "use strict";
+
+  console.log(10 + 10 + "10"); //number + number = 20 (Сложение) number + string = 2010 (конкатенация)
+  console.log(10 + "10" + 10); //number + string = 1010 (конкатенация) string + string = 101010 (конкатенация)
+  console.log(10 + 10 + +"10"); //number + number = 20 (Сложение) +string = 10 (преобразование в число) number + number = 30 (Сложение)
+  console.log(10 / -""); //+string = -0 (преобразование в число) Деление на -0 дает всегда -Infinity
+  console.log(10 / +"2,5"); //+string = NaN (преобразование текста в число возвращает ошибку) Любые операции с NaN возвращают NaN
+
+</script>

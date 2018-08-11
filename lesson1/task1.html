@@ -1,0 +1,23 @@
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<script>
+  "use strict";
+
+  /**
+   * Вывести температуру в градусах по Фаренгейту
+   * @param {number} Tс температура в градусах
+   * @return {number} Tf температура в Фаренгейтах
+   */
+
+  function calculate(Tc) {
+    return (9 / 5) * Tc + 32;
+  }
+
+  const Tc = +prompt('Введите температуру в градусах', '');
+
+  if (isNaN(Tc)) {
+    alert('Введена не корректная температура');
+  } else {
+    alert(`${Tc} в Фарейнгейтах = ${calculate(Tc)}`);
+  }
+
+</script>
