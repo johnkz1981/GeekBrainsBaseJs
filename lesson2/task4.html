@@ -1,0 +1,64 @@
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<script>
+  "use strict";
+
+  /**
+   * Реализовать основные 4 арифметические операции (+, -, /, *) 
+   * в виде функций с двумя параметрами.
+   * Обязательно использовать оператор return.
+   */
+
+  /**
+   * Калькулятор для двух чисел
+   * @param {number} - первое число
+   * @param {number} - второе число
+   * @param {string} - арифметическая операция
+   * @return {number || boolean} - результат выражения 
+   */
+
+  function calc(a, b, c) {
+
+    if (isNaN(+a) || isNaN(+b)) {
+      return false;
+    }
+    switch (c) {
+      case '+':
+        return a + b;
+      case '-':
+        return a - b;
+      case '/':
+        return a / b;
+      case '*':
+        return a * b;
+      default:
+        return false;
+    }
+  }
+
+  const getPlus = calc(2, 3, '+');
+  const getMinus = calc(2, 3, '-');
+  const getMultiplication = calc(2, 3, '*');
+  const getSegmentation = calc(2, 3, '/');
+  const getError = calc(2, 3, 4);
+
+  /**
+   * Вывод в консоль результата
+   * @param {number || boolean} результат метода calc
+   * @return {undefined} вывод в консоль
+   */
+
+  function getConsole(result) {
+    if (result === false) {
+      console.error('Проверьте правильность введенных данных');
+    } else {
+      console.log(result);
+    }
+  }
+
+  getConsole(getPlus);
+  getConsole(getMinus);
+  getConsole(getMultiplication);
+  getConsole(getSegmentation);
+  getConsole(getError);
+
+</script>

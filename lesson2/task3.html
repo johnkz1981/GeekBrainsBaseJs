@@ -12,17 +12,13 @@
    * - если а и b разных знаков, вывести их сумму;
    */
 
-  let a = 10, b = -5;
+  let a = -10, b = -5;
 
   if (a > -1 && b > -1) {
     console.log(a - b)
-  }
-
-  if (a < 0 && b < 0) {
+  } else if (a < 0 && b < 0) {
     console.log(a * b)
-  }
-
-  if ((a < 0 && b > -1) || (a > -1 && b < 0)) {
+  } else {
     console.log(a + b)
   }
 
