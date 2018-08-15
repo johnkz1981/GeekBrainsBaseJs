@@ -1,0 +1,45 @@
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<script>
+  "use strict";
+
+  /**
+   * Объясните почему код даёт именно такие результаты?
+   */
+
+  let a = 1, b = 1, c, d;
+
+  /** 
+   * 1) Инкрементируется @param a++ // a = 2
+   * 2) присваевается @param c @param a // c = 2 
+   */
+
+  c = ++a;
+  alert(c); // 2
+
+  /** 
+   * 1) присваевается @param d @param b // d = 1 
+   * 2) Инкрементируется @param b++ // b = 2
+   */
+
+  d = b++; 
+  alert(d); // 1
+
+  /** 
+   * 1) Инкрементируется @param a++ // a = 3
+   * 2) присваевается @param c @param a + 2 // c = 5 
+   */
+
+  c = 2 + ++a;
+  alert(c); // 5
+
+  /** 
+   * 1) присваевается @param d @param b + 2 // b = 2, d = 4 
+   * 2) Инкрементируется @param b++ // b = 3
+   */
+  
+  d = 2 + b++;
+  alert(d); // 4
+  alert(a); // 3
+  alert(b); // 3
+
+</script>
