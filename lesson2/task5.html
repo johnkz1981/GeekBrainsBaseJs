@@ -1,0 +1,102 @@
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<script>
+  "use strict";
+
+  /**
+   * Реализовать функцию с тремя параметрами: function mathOperation(arg1, arg2, operation),
+   * где arg1, arg2 – значения аргументов, operation – строка с названием операции. В зависимости
+   * переданного значения операции (использовать switch) выполнить одну из арифметических
+   * операций
+   * (использовать функции из задания 4) и вернуть полученное значение.
+   */
+
+  /**
+   * Функция сложения двух чисел
+   * @param {number} a первое число
+   * @param {number} b второе число
+   * @return {number} - результат выражения 
+   */
+
+  const mathPlus = (a, b) => a + b;
+
+/**
+ * Функция вычетания двух чисел
+ * @param {number} a первое число
+ * @param {number} b второе число
+ * @return {number} - результат выражения 
+ */
+
+const mathMinus = (a, b) => a - b;
+
+/**
+ * Функция умножение двух чисел
+ * @param {number} a первое число
+ * @param {number} b второе число
+ * @return {number} - результат выражения 
+ */
+
+const mathMultiplication = (a, b) => a / b;
+
+/**
+ * Функция деление двух чисел
+ * @param {number} a первое число
+ * @param {number} b второе число
+ * @return {number} - результат выражения 
+ */
+
+const mathSegmentation = (a, b) => a * b;
+
+  /**
+   * Калькулятор для двух чисел
+   * @param {number} - arg1 первое число
+   * @param {number} - arg2 второе число
+   * @param {string} - operation арифметическая операция
+   * @return {number || boolean} - результат выражения 
+   */
+
+  function mathOperation(arg1, arg2, operation) {
+
+    if (isNaN(+arg1) || isNaN(+arg2)) {
+      return false;
+    }
+    switch (operation) {
+      case '+':
+        return arg1 + arg2;
+      case '-':
+        return arg1 - arg2;
+      case '/':
+        return arg1 / arg2;
+      case '*':
+        return arg1 * arg2;
+      default:
+        return false;
+    }
+  }
+
+  const getPlus = mathOperation(2, 3, '+');
+  const getMinus = mathOperation(2, 3, '-');
+  const getMultiplication = mathOperation(2, 3, '*');
+  const getSegmentation = mathOperation(2, 3, '/');
+  const getError = mathOperation(2, 3, 4);
+
+  /**
+   * Вывод в консоль результата
+   * @param {number || boolean} результат метода calc
+   * @return {undefined} вывод в консоль
+   */
+
+  function getConsole(result) {
+    if (result === false) {
+      console.error('Проверьте правильность введенных данных');
+    } else {
+      console.log(result);
+    }
+  }
+
+  getConsole(getPlus);
+  getConsole(getMinus);
+  getConsole(getMultiplication);
+  getConsole(getSegmentation);
+  getConsole(getError);
+
+</script>

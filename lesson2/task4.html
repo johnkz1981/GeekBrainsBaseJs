@@ -9,56 +9,44 @@
    */
 
   /**
-   * Калькулятор для двух чисел
-   * @param {number} - первое число
-   * @param {number} - второе число
-   * @param {string} - арифметическая операция
-   * @return {number || boolean} - результат выражения 
+   * Функция сложения двух чисел
+   * @param {number} a первое число
+   * @param {number} b второе число
+   * @return {number} - результат выражения 
    */
 
-  function calc(a, b, c) {
-
-    if (isNaN(+a) || isNaN(+b)) {
-      return false;
-    }
-    switch (c) {
-      case '+':
-        return a + b;
-      case '-':
-        return a - b;
-      case '/':
-        return a / b;
-      case '*':
-        return a * b;
-      default:
-        return false;
-    }
-  }
-
-  const getPlus = calc(2, 3, '+');
-  const getMinus = calc(2, 3, '-');
-  const getMultiplication = calc(2, 3, '*');
-  const getSegmentation = calc(2, 3, '/');
-  const getError = calc(2, 3, 4);
+  const mathPlus = (a, b) => a + b;
 
   /**
-   * Вывод в консоль результата
-   * @param {number || boolean} результат метода calc
-   * @return {undefined} вывод в консоль
+   * Функция вычетания двух чисел
+   * @param {number} a первое число
+   * @param {number} b второе число
+   * @return {number} - результат выражения 
    */
 
-  function getConsole(result) {
-    if (result === false) {
-      console.error('Проверьте правильность введенных данных');
-    } else {
-      console.log(result);
-    }
-  }
+  const mathMinus = (a, b) => a - b;
 
-  getConsole(getPlus);
-  getConsole(getMinus);
-  getConsole(getMultiplication);
-  getConsole(getSegmentation);
-  getConsole(getError);
+  /**
+   * Функция умножение двух чисел
+   * @param {number} a первое число
+   * @param {number} b второе число
+   * @return {number} - результат выражения 
+   */
+
+  constmathtMultiplication = (a, b) => a / b;
+
+  /**
+   * Функция деление двух чисел
+   * @param {number} a первое число
+   * @param {number} b второе число
+   * @return {number} - результат выражения 
+   */
+
+  const mathSegmentation = (a, b) => a * b;
+
+  console.log(mathPlus(2, 3));
+  console.log(mathMinus(2, 3));
+  console.log(mathMultiplication(2, 3));
+  console.log(mathSegmentation(2, 3));
 
 </script>
