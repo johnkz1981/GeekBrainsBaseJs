@@ -1,0 +1,46 @@
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<script>
+  "use strict";
+
+  /**
+   * С помощью цикла while вывести все простые числа в промежутке от 0 до 100
+   * (можно без оптимизаций).
+   */
+
+  let i = 0;
+
+  while (i <= 100) {
+
+    if (getCountNumber(i) === 0) {
+      console.log(`${i} - Простое число`);
+    }
+
+    i++;
+  }
+
+  /**
+  * Возвращает количество делений от 2 до i - 1 без остатка
+  * @param {number} i целое число для проверки
+  * @return {number} количество делений без остатка 
+  */
+  function getCountNumber(i) {
+
+    if (i === 0) {
+      return 1;
+    }
+
+    let j = 2, k = 0;
+
+    while (i > j) {
+
+      if (Number.isInteger(i / j)) {
+        k++;
+      }
+
+      j++;
+    }
+
+    return k;
+  }
+
+</script>

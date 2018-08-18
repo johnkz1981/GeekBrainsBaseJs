@@ -1,0 +1,48 @@
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<script>
+  "use strict";
+
+  /**
+   * Дан массив (создать такой же, с такими же значениями):
+   * ```
+   * const arr = [
+   * [2, 4, 6],
+   * [1, 5, 10],
+   * [7, 4, 1],
+   * ];
+   * ```
+   * Задания:
+   * 1 Найти массив, у которого сумма всех чисел максимальна, вывести в console.log
+   * индекс этого массива.
+   * 2 Получить и вывести в console.log минимальное значение найденное в массиве,
+   * который мы получили в первом пункте.
+   */
+
+  const arr = [
+    [2, 4, 6],
+    [1, 5, 10],
+    [7, 4, 1],
+  ];
+  const arrSum = [];
+
+  /**
+  * Считает сумму в массиве
+  * @param {number} accumulator сумма чисел в текущей итерации
+  * @param {number} currentValue текущее значение в итерации
+  * @return {number} результат суммирования
+  */
+  const reducer = (accumulator, currentValue) => accumulator + currentValue;
+
+  for (const i in arr) {
+    arrSum[i] = arr[i].reduce(reducer); // Новый массив сумм в матрице
+  }
+  
+  const sortArrSum = arrSum.slice().sort(); // Получаем новый отсортированный массив
+  const maxNumber = sortArrSum.slice().pop(); // Получаем последнее число в отсортированном массиве
+  const minNumber = sortArrSum.slice().shift(); // Получаем первое число в отсортированном массиве
+  const maxIndex = arrSum.indexOf(maxNumber); // Находим индекс в массиве
+
+  console.log(`Индекс с максимальной суммой в массиве ${maxIndex}`);
+  console.log(`Минимальное число в массиве ${minNumber}`);
+
+</script>
