@@ -1,0 +1,62 @@
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<script>
+  "use strict";
+
+  /**
+   *  Написать функцию, преобразующую число в объект. Передавая на вход число в диапазоне [0,
+   * 999],
+   * мы должны получить на выходе объект, в котором в соответствующих свойствах описаны
+   * разряды числа:
+   * - единицы (в свойстве frsttigit)
+   * - десятки (в свойстве secondtigit)
+   * - сотни (в свойстве thirdtigit)
+   * Например, для числа 45 мы должны получить следующий объект:
+   * ```
+   * frsttigit: 5,
+   * secondtigit: 4,
+   * thirdtigit: 0,
+   * ```
+   * Если число было передано вне [0, 999] диапазона, не целое число или вообще не число,
+   * необходимо выдать соответствующее сообщение с помощью console.log и вернуть пустой объект.
+   */
+
+  const number = +prompt('Введите целое число от 0-999', '');
+
+  /**
+  * Преобразует число в объект
+   * @param {number} number Число от 0 до 999
+   * @return {Object} Объект в разрядах введеного числа
+  */
+  function getObj(number) {
+    if (isNaN(number) || !Number.isInteger(number) || number > 999 || number < 0) {
+      return console.log(`Вне [0, 999] диапазона, не целое число или вообще не число ${({})}`)
+    }
+
+    let numberString = number.toString();
+
+    if (number < 10) {
+      numberString = '00' + numberString;
+    } else if (number < 100) {
+      numberString = '0' + numberString;
+    }
+
+    const numberSplitArr = numberString.split('');
+    
+    /**
+     * Разряды в числе.
+     * @property {int} frsttigit 1-ый разряд.
+     * @property {int} secondtigit 2-ый разряд.
+     * @property {int} thirdtigit 3-ый разряд.
+     */
+    const obj = {
+      frsttigit: +numberString[2],
+      secondtigit: +numberString[1],
+      thirdtigit: +numberString[0],
+    }
+
+    return obj;
+  }
+
+  console.log(getObj(number));
+
+</script>
