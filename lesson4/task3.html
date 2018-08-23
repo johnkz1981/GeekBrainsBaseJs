@@ -32,10 +32,28 @@
     },
   ]
 
+  const alph = ['a', 'b', 'c', 'd'];
   console.log(questions);
 
-  alert(`Привет я Дмитрий Дибров и Вы в
+  console.log(`Привет я Дмитрий Дибров и Вы в
   программе кто хочет стать миллионером!`);
+
+  console.log(`Выберете правильный ответ \n${questions[0].question}`);
+
+  let right = questions[0].right;
+  let answers = questions[0].answers;
+  for (const i in answers) {
+    console.log(`${alph[i]} ${answers[i]}\n`)
+  }
+
+  while (true) {
+    let answer = prompt('Выберете правильный вариант', '')
+    alph.includes(answer);
+    let i = alph.indexOf(answer);
+    console.log(answers[i] === right);
+    let exit = prompt('Выйти нажмите 0', '0');
+    if (exit === '0') break;
+  }
 
   const settings = {
     rowsCount: 8,
