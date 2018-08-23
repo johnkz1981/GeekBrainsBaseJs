@@ -24,60 +24,172 @@
    * Также должна быть возможность выхода из игры заранее, если пользователю надоело играть.
    */
 
-  let questions = [
+  /**
+   * Массив c вопросами.
+   * @property {string} question Вопрос.
+   * @property {string} right Правильный ответ.
+   * @property {array} answers. Массив с ответами
+   */
+  const questions = [
     {
-      question: 'Сколько букв в слове "привет"',
+      question: 'Сколько букв в слове "один"',
+      right: "Четыре",
+      answers: ['Четыре', 'Шесть', 'Семь', 'Куда я попал ?']
+    },
+    {
+      question: 'Сколько букв в слове "два"',
+      right: "Три",
+      answers: ['Три', 'Шесть', 'Семь', 'Куда я попал ?']
+    },
+    {
+      question: 'Сколько букв в слове "три"',
+      right: "Три",
+      answers: ['Три', 'Шесть', 'Семь', 'Куда я попал ?']
+    },
+    {
+      question: 'Сколько букв в слове "четыре"',
       right: "Шесть",
       answers: ['Пять', 'Шесть', 'Семь', 'Куда я попал ?']
     },
-  ]
+    {
+      question: 'Сколько букв в слове "пять"',
+      right: "Четыре",
+      answers: ['Четыре', 'Шесть', 'Семь', 'Куда я попал ?']
+    },
+  ];
 
-  const alph = ['a', 'b', 'c', 'd'];
-  console.log(questions);
-
-  console.log(`Привет я Дмитрий Дибров и Вы в
-  программе кто хочет стать миллионером!`);
-
-  console.log(`Выберете правильный ответ \n${questions[0].question}`);
-
-  let right = questions[0].right;
-  let answers = questions[0].answers;
-  for (const i in answers) {
-    console.log(`${alph[i]} ${answers[i]}\n`)
-  }
-
-  while (true) {
-    let answer = prompt('Выберете правильный вариант', '')
-    alph.includes(answer);
-    let i = alph.indexOf(answer);
-    console.log(answers[i] === right);
-    let exit = prompt('Выйти нажмите 0', '0');
-    if (exit === '0') break;
-  }
-
+  /**
+   * Объект с настройками игры.
+   * @property {array} символы в тестах.
+   * @property {string} имя ведущего.
+   */
   const settings = {
-    rowsCount: 8,
-    colsCount: 10,
-    startPositionX: 0,
-    startPositionY: 0,
-    availableDirections: [-1, 2, 4, 6, 8, 1, 3, 7, 9]
+    alph: ['a', 'b', 'c', 'd'],
+    leading: 'Дмитрий Дибров',
   };
 
-  const player = {
-    x: null,
-    y: null,
-    maxX: null,
-    maxY: null,
+  /**
+   * Объект игры, здесь будут все методы и свойства связанные с самой игрой в общем.
+   * @property {settings} settings Настройки игры.
+   */
+  const game = {
+    settings,
+    
+    /**
+   * Генерирует случйный массив с числами.
+   * @param {int} разрядность числа.
+   * @param {int} Максимальное число в массиве -1.
+   * @return {array} Массив целых чиел. 
+   */
+    getRandomArr(bitNumber, lengthArr) {
+      const randomArr = [];
+      bitNumber = Math.pow(10, bitNumber);
+
+      while (randomArr.length < lengthArr) {
+        const part = Math.floor(Math.random() * bitNumber);
+
+        if (!randomArr.includes(part) && part < lengthArr) {
+          randomArr.push(part);
+        }
+      }
+      return randomArr;
+    },
+    
+    /**
+     * Запускает игру.
+     */
+    run() {
+      // Получаем разрядность количество вариантов
+      const getBitAlph = settings.alph.length.toString().length;
+
+      // Получаем разрядность количество вопросов
+      const getBitQuestion = questions.length.toString().length;
+
+      // Генерируем массив для символов
+      const generateAlph = this.getRandomArr(getBitAlph, settings.alph.length);
+
+      // Генерируем массив для вопросов
+      const generateQuestion = this.getRandomArr(getBitQuestion, questions.length);
+      
+      // Количество верных вариантов устанавливаем в 0
+      let score = 0;
+      
+      // Количество вопросов устанавливаем в 0
+      let countQuestion = 0;
+      
+      // Флаг для выхода по требованию пользователя
+      let breakGame = false;
+      
+      // Выводим приветствие 
+      console.log(`Привет я ${settings.leading} и Вы в
+        программе кто хочет стать миллионером!`);
+
+      while (countQuestion < generateQuestion.length) {
+        // Получаем правильный ответ
+        let right = questions[generateQuestion[countQuestion]].right;
+
+        // Получаем массив ответов
+        let answers = questions[generateQuestion[countQuestion]].answers;
+
+        //Выводим вопрос
+        console.log(`Вопрос №${countQuestion + 1} \n${questions[generateQuestion[countQuestion]].question}`);
+
+        //Выводим количество вариантов
+        for (const i in generateAlph) {
+          console.log(`${settings.alph[i]} ${answers[generateAlph[i]]}\n`)
+        }
+
+        // Спросить пользователя об ответе или выходи из игры
+        let answer = prompt('Выберете правильный вариант или "Отмена" для выхода', '')
+        if (answer === null) {
+          console.log(`Досвидание правильных ответов ${score}`);
+          breakGame = true;
+          break;
+        }
+
+        // Проверяем ответ
+        if (!settings.alph.includes(answer)) {
+          alert(`Введен не верный символ используйте ${settings.alph} попробуйте еще раз`);
+          console.clear();
+          continue;
+        }
+        let i = settings.alph.indexOf(answer);
+        if (answers[generateAlph[i]] === right) {
+          score++;
+        }
+        countQuestion++;
+
+        // Очищаем консоль
+        console.clear();
+      }
+
+      //Если пользователь не прервал игру выводим результат
+      // и предлагаем сыграть еще раз
+      if (!breakGame) {
+        this.repeat(score);
+      }
+    },
 
     /**
-     * Инициализация игрока и его метоположения.
-     */
-    init(startX, startY, maxX, maxY) {
-      this.x = startX;
-      this.y = startY;
-      this.maxX = maxX - 1;
-      this.maxY = maxY - 1;
-    },
-  }
+    * По окончании игры, когда было задано n количество вопросов, 
+    * сообщаем пользователю его счет и
+    * предлагаем сыграть снова.
+    * @param {int} score ,Количество верных ответов.
+    */
+    repeat(score) {
+      console.log(`Правильных ответов ${score}`);
+      let exit = prompt('Хотите сыграть снова?', '');
 
+      if (exit === null) {
+        console.log('Досвидание');
+        return;
+      } else {
+        console.clear();
+        this.run();
+      }
+    }
+  };
+
+  // Запускаем игру.
+  game.run();
 </script>
