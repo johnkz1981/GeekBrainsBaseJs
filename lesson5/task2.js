@@ -4,6 +4,7 @@
  */
 const chess = {
   gameContainerEl: document.getElementById("game"),
+  alfa : ["a", "b", "c", "d", "e", "f", "g", "h"],
   /**
    * Метод отображения карты (игрового поля).
    * @param {string} renderString переменная для прорисовки таблицы
@@ -18,7 +19,8 @@ const chess = {
 
       for (let colNum = 0; colNum < 8; colNum++) {
         let getColor = this.isCellIsBlack(rowNum, colNum);
-        renderString += `<td class=${color[getColor]} data-row="${rowNum}" data-num="${colNum}"></td>`;
+        let pos = `${ this.alfa[colNum]}${ i }`;
+        renderString += `<td class=${color[getColor]} data-pos="${this.alfa[colNum]}${i}"></td>`;
       }
       renderString += `</td><td>${i}</td></tr>`;
     }
@@ -42,13 +44,18 @@ const chess = {
    * @returns {string} 'abcd.....'.
    */
   getHead() {
-    const alfa = ["a", "b", "c", "d", "e", "f", "g", "h"];
     let renderString = "<tr><td></td>";
-    for (const i in alfa) {
-      renderString += `<td>${alfa[i]}</td>`;
+
+    for (const i in this.alfa) {
+      renderString += `<td>${this.alfa[i]}</td>`;
     }
     return (renderString += "<td></td></tr>");
-  }
+  },
+
+  figures: [
+    { name: 'p', color: 'w', pos: 'a2',code: '&#9812;' },
+    { name: 'Q', color: 'b', pos: 'd8' },
+],
 };
 // Запускаем метод отображения карты.
 chess.renderMap();
