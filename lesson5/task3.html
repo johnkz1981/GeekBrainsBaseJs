@@ -8,6 +8,10 @@ Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="a
     padding: 20px;
     max-width: 800px
   }
+  
+  .form-control-danger {
+  border-color: #dc3545;
+  }
 </style>
 </head>
 
@@ -27,18 +31,22 @@ Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="a
       <div class="form-row">
         <div class="form-group col-md-6">
           <input type="text" name="name" class="form-control" placeholder="Имя">
+          <div class="form-control-feedback text-danger name-danger"></div>
         </div>
         <div class="form-group col-md-6">
           <input type="text" name="phone" class="form-control" placeholder="Телефон">
+          <div class="form-control-feedback text-danger phone-danger"></div>
         </div>
       </div>
       <div class="form-row">
-        <div class="form-group col-md-6">
+        <div class="form-group has-danger col-md-6">
           <input type="password" name="password" class="form-control" placeholder="Пароль">
+          <div class="form-control-feedback text-danger password-danger"></div>
         </div>
         <div class="form-group col-md-6">
           <input type="password" name="password_repeat" class="form-control" placeholder="Повторите
 пароль">
+          <div class="form-control-feedback text-danger password_repeat-danger"></div>
         </div>
       </div>
       <button type="submit" class="btn btn-primary">Отправить</button>
