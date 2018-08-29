@@ -20,7 +20,7 @@ const chess = {
       for (let colNum = 0; colNum < 8; colNum++) {
         let getColor = this.isCellIsBlack(rowNum, colNum);
         let pos = `${ this.alfa[colNum]}${ i }`;
-        renderString += `<td class=${color[getColor]} data-pos="${this.alfa[colNum]}${i}"></td>`;
+        renderString += `<td class=${color[getColor]} data-pos="${pos}"></td>`;
       }
       renderString += `</td><td>${i}</td></tr>`;
     }
