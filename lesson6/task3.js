@@ -29,7 +29,12 @@ const gallery = {
     openedImageNextBtnSrc: "images/gallery/next.png",
     openedImageCap: "images/gallery/cap.png"
   },
+
+  // Текущий открытый элемент
   openedImageEl: {},
+
+  // Массив картинок в контейнере
+  previewSelectorChildren: {},
 
   /**
    * Инициализирует галерею, ставит обработчик события.
@@ -38,6 +43,11 @@ const gallery = {
   init(userSettings = {}) {
     // Записываем настройки, которые передал пользователь в наши настройки.
     Object.assign(this.settings, userSettings);
+
+    // Получаем массив картинок в контейнере
+    this.previewSelectorChildren = document.querySelector(
+      this.settings.previewSelector
+    ).children;
 
     // Находим элемент, где будут превью картинок и ставим обработчик на этот элемент,
     // при клике на этот элемент вызовем функцию containerClickHandler в нашем объекте
@@ -117,15 +127,21 @@ const gallery = {
     const backImageElement = new Image();
     backImageElement.classList.add(this.settings.openedImageBackBtnClass);
     backImageElement.src = this.settings.openedImageBackBtnSrc;
-    backImageElement.addEventListener("click", () => this.getBackImage());
+    backImageElement.addEventListener("click", () => {
+      this.openedImageEl = this.getBackImage();
+      this.openImage(this.openedImageEl.dataset.full_image_url);
+    });
     galleryWrapperElement.appendChild(backImageElement);
 
-    // Создаем картинку для кнопки назад, ставим класс, src и добавляем ее в контейнер-обертку.
-    const NextImageElement = new Image();
-    NextImageElement.classList.add(this.settings.openedImageNextBtnClass);
-    NextImageElement.src = this.settings.openedImageNextBtnSrc;
-    NextImageElement.addEventListener("click", () => this.getNextImage());
-    galleryWrapperElement.appendChild(NextImageElement);
+    // Создаем картинку для кнопки вперед, ставим класс, src и добавляем ее в контейнер-обертку.
+    const nextImageElement = new Image();
+    nextImageElement.classList.add(this.settings.openedImageNextBtnClass);
+    nextImageElement.src = this.settings.openedImageNextBtnSrc;
+    nextImageElement.addEventListener("click", () => {
+      this.openedImageEl = this.getNextImage();
+      this.openImage(this.openedImageEl.dataset.full_image_url);
+    });
+    galleryWrapperElement.appendChild(nextImageElement);
 
     // Создаем картинку, которую хотим открыть, ставим класс и добавляем ее в контейнер-обертку.
     const image = new Image();
@@ -160,8 +176,11 @@ const gallery = {
   getNextImage() {
     // Получаем элемент справа от текущей открытой картинки.
     // Если элемент справа есть, его и возвращаем, если нет, то берем первый элемент в контейнере миниатюр.
-    if (this.openedImageEl.nextElementSibling !== null)
-      console.log(this.openedImageEl.nextElementSibling);
+    if (this.openedImageEl.nextElementSibling !== null) {
+      return this.openedImageEl.nextElementSibling;
+    } else {
+      return this.previewSelectorChildren[0];
+    }
   },
   /**
    * Возвращает предыдущий элемент (картинку) от открытой или последнюю картинку в контейнере,
@@ -171,8 +190,13 @@ const gallery = {
   getBackImage() {
     // Получаем элемент слева от текущей открытой картинки.
     // Если элемент слева есть, его и возвращаем, если нет, то берем последний элемент в контейнере миниатюр.
-    if (this.openedImageEl.previousElementSibling !== null)
-      console.log(this.openedImageEl.previousElementSibling);
+    if (this.openedImageEl.previousElementSibling !== null) {
+      return this.openedImageEl.previousElementSibling;
+    } else {
+      return this.previewSelectorChildren[
+        this.previewSelectorChildren.length - 1
+      ];
+    }
   }
 };
 
