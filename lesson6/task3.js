@@ -33,9 +33,6 @@ const gallery = {
   // Текущий открытый элемент
   openedImageEl: {},
 
-  // Массив картинок в контейнере
-  previewSelectorChildren: {},
-
   /**
    * Инициализирует галерею, ставит обработчик события.
    * @param {Object} userSettings Объект настроек для галереи.
@@ -45,9 +42,9 @@ const gallery = {
     Object.assign(this.settings, userSettings);
 
     // Получаем массив картинок в контейнере
-    this.previewSelectorChildren = document.querySelector(
+    this.previewSelector = document.querySelector(
       this.settings.previewSelector
-    ).children;
+    );
 
     // Находим элемент, где будут превью картинок и ставим обработчик на этот элемент,
     // при клике на этот элемент вызовем функцию containerClickHandler в нашем объекте
@@ -179,7 +176,7 @@ const gallery = {
     if (this.openedImageEl.nextElementSibling !== null) {
       return this.openedImageEl.nextElementSibling;
     } else {
-      return this.previewSelectorChildren[0];
+      return this.openedImageEl.parentElement.firstElementChild;
     }
   },
   /**
@@ -193,9 +190,7 @@ const gallery = {
     if (this.openedImageEl.previousElementSibling !== null) {
       return this.openedImageEl.previousElementSibling;
     } else {
-      return this.previewSelectorChildren[
-        this.previewSelectorChildren.length - 1
-      ];
+      return this.openedImageEl.parentElement.lastElementChild;
     }
   }
 };
