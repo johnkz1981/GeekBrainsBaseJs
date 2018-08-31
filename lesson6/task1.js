@@ -106,7 +106,7 @@ const gallery = {
 
     //Ставим заглушку если нет картинки
     image.onerror = event =>
-      (event.srcElement.src = this.settings.openedImageCap);
+      (event.target.src = this.settings.openedImageCap);
     image.classList.add(this.settings.openedImageClass);
     galleryWrapperElement.appendChild(image);
 
