@@ -259,15 +259,29 @@ const snake = {
   getNextStepHeadPoint() {
     // Получаем в отдельную переменную голову змейки.
     const firstPoint = this.body[0];
+    const maxX = config.getColsCount() - 1;
+    const maxY = config.getRowsCount() - 1;
     // Возвращаем точку, где окажется голова змейки в зависимости от направления.
     switch (this.direction) {
       case "up":
+        if (firstPoint.y === 0) {
+          return { x: firstPoint.x, y: maxY };
+        }
         return { x: firstPoint.x, y: firstPoint.y - 1 };
       case "right":
+        if (firstPoint.x === maxX) {
+          return { x: 0, y: firstPoint.y };
+        }
         return { x: firstPoint.x + 1, y: firstPoint.y };
       case "down":
+        if (firstPoint.y === maxY) {
+          return { x: firstPoint.x, y: 0 };
+        }
         return { x: firstPoint.x, y: firstPoint.y + 1 };
       case "left":
+        if (firstPoint.x === 0) {
+          return { x: maxX, y: firstPoint.y };
+        }
         return { x: firstPoint.x - 1, y: firstPoint.y };
     }
   },
@@ -372,6 +386,7 @@ const status = {
  * @property {snake} snake Объект змейки.
  * @property {food} food Объект еды.
  * @property {status} status Статус игры.
+ * @property {score} score Объект подсчета очков.
  * @property {int} tickInterval Номер интервала игры.
  */
 const game = {
@@ -381,7 +396,6 @@ const game = {
   food,
   status,
   score,
-  transformNextStep,
   tickInterval: null,
 
   /**
@@ -487,7 +501,7 @@ const game = {
       }
     }
     // Если выходим за пределы поля
-    const objPointColsRows = {
+   /*  const objPointColsRows = {
       snakePoint: this.snake.getNextStepHeadPoint(),
       colsCount: this.config.getColsCount(),
       rowsCount: this.config.getRowsCount()
@@ -497,7 +511,7 @@ const game = {
     if (this.transformNextStep.isLimitPoint()) {
       console.log(this.snake);
       this.snake.body[0] = this.transformNextStep.getNewPoint();
-    }
+    } */
 
     // Перемещаем змейку.
     this.snake.makeStep();
