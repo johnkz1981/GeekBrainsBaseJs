@@ -500,18 +500,6 @@ const game = {
         this.finish();
       }
     }
-    // Если выходим за пределы поля
-   /*  const objPointColsRows = {
-      snakePoint: this.snake.getNextStepHeadPoint(),
-      colsCount: this.config.getColsCount(),
-      rowsCount: this.config.getRowsCount()
-    };
-    this.transformNextStep.init(objPointColsRows);
-
-    if (this.transformNextStep.isLimitPoint()) {
-      console.log(this.snake);
-      this.snake.body[0] = this.transformNextStep.getNewPoint();
-    } */
 
     // Перемещаем змейку.
     this.snake.makeStep();
