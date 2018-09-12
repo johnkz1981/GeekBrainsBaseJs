@@ -1,4 +1,3 @@
-
 // Primitives vs Objects
 
 // let a = 23;
@@ -44,36 +43,43 @@
 //ES6
 
 class Person {
-    constructor(name, yearOfBirth){
-        this.name = name;
-        this.yearOfBirth = yearOfBirth;
+  constructor(name, yearOfBirth) {
+    this.name = name;
+    this.yearOfBirth = yearOfBirth;
+  }
+  calcAge() {
+    console.log(new Date().getFullYear() - this.yearOfBirth);
+  }
+  sayHi() {
+    return `${this.name} says hi`;
+  }
+  static triple(x) {
+    if (x === undefined) {
+      x = 2;
     }
-    calcAge(){
-        console.log(new Date().getFullYear() - this.yearOfBirth);
-    }
-    sayHi(){
-        return `${this.name} says hi`;
-    }
-    static triple(x){
-        if (x === undefined){
-            x = 2;
-        }
-        return x * 3;
-    }
+    return x * 3;
+  }
+  remove() {
+    delete this.name;
+    delete this.yearOfBirth;
+  }
 }
 
 class Teacher extends Person {
-    constructor(name, yearOfBirth, subject){
-        super(name, yearOfBirth); // Вызов конструктора родителя
-        this.subject = subject;
-    }
-    sayHi(){
-        console.log(`${super.sayHi()} as teacher`);
-    }
+  constructor(name, yearOfBirth, subject) {
+    super(name, yearOfBirth); // Вызов конструктора родителя
+    this.subject = subject;
+  }
+  sayHi() {
+    console.log(`${super.sayHi()} as teacher ${this.name}`);
+  }
 }
-let john = new Person('John', 1965);
+let john = new Person("John", 1965);
 john.calcAge();
-let ann = new Teacher('Ann', 1965);
+let ann = new Teacher("Ann", 1965);
 ann.sayHi();
 console.log(Teacher.triple(4));
-
+console.log(ann.name);
+console.log(ann.yearOfBirth);
+ann.remove();
+console.log(ann.yearOfBirth);
