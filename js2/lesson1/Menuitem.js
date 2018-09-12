@@ -1,3 +1,5 @@
+'use strict';
+
 class MenuItem {
     constructor(href, title){
         this.href = href;

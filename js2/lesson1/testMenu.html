@@ -1,29 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <title>Title</title>
 </head>
+
 <body>
-    <div id="menu"></div>
-<script src="Menu.js"></script>
-<script src="Menuitem.js"></script>
-<script>
-    window.onload = function(){
-        // DOM ready
-        let menuBlock = document.getElementById('menu');
+  <div id="menu"></div>
+  <div id="sub-menu"></div>
+  <script src="Menu.js"></script>
+  <script src="Menuitem.js"></script>
+  <script>
+    'use strict';
 
-        let menu = new Menu('my', 'my', [
-            new MenuItem('/', 'Home'),
-            new MenuItem('/about', 'About'),
-            new MenuItem('/contacts', 'Contacts'),
-            new MenuItem('/blog', 'Blog'),
-            new MenuItem('/policy', 'Policy'),
-            new subMenu('me', 'me', 'me')
-        ]);
+    window.onload = function () {
+      // DOM ready
+      let menuBlock = document.getElementById('menu');
 
-        menuBlock.innerHTML = menu.render();
+      let menu = new Menu('my', 'my', [
+        new MenuItem('/', 'Home'),
+        new Menu('me', 'me', [
+          new MenuItem('/subContacts', 'subContacts')
+        ]),
+        new MenuItem('/about', 'About'),
+        new MenuItem('/contacts', 'Contacts'),
+        new SubMenu('me', 'me', [
+          new MenuItem('/subContacts', 'subContacts')
+        ]),
+        new MenuItem('/blog', 'Blog'),
+        new MenuItem('/policy', 'Policy'),
+        new SubMenu('me', 'me', [
+          new MenuItem('/subHome', 'subHome')
+        ])
+      ]);
+
+      menuBlock.innerHTML = menu.render();
+
+      const subMenuBlock = document.getElementById('sub-menu');
+
+      const subMenu = new SubMenu('my', 'my', [
+        new MenuItem('/', 'Home'),
+        new Menu('me', 'me', [
+          new MenuItem('/subContacts', 'subContacts')
+        ]),
+        new MenuItem('/about', 'About'),
+        new MenuItem('/contacts', 'Contacts'),
+        new SubMenu('me', 'me', [
+          new MenuItem('/subContacts', 'subContacts')
+        ]),
+        new MenuItem('/blog', 'Blog'),
+        new MenuItem('/policy', 'Policy'),
+        new SubMenu('me', 'me', [
+          new MenuItem('/subHome', 'subHome')
+        ])
+      ]);
+
+      subMenuBlock.innerHTML = subMenu.render();
     }
-</script>
+  </script>
 </body>
+
 </html>

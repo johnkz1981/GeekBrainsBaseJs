@@ -83,3 +83,4 @@ console.log(ann.name);
 console.log(ann.yearOfBirth);
 ann.remove();
 console.log(ann.yearOfBirth);
+console.log(ann instanceof Person);
