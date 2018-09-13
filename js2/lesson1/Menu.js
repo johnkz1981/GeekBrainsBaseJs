@@ -17,6 +17,14 @@ class Menu {
     result += "</ul>";
     return result;
   }
+
+  remove() {
+    const containerMenu = document.querySelectorAll(`.${this.className}`);
+    
+    for(const itemContainer of containerMenu){
+      itemContainer.remove();
+    }
+  }
 }
 
 class SubMenu extends Menu {
