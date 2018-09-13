@@ -20,15 +20,18 @@
 * @param stuffing    Начинка
 * @throws {HamburgerException}  При неправильном использовании
 */
-function Hamburger(size, stuffing) { ... }
+function Hamburger(size, stuffing) { 
+  this.size = size;
+  this.stuffing = stuffing;
+ }
 /* Размеры, виды начинок и добавок */
-Hamburger.SIZE_SMALL = ...
-Hamburger.SIZE_LARGE = ...
-Hamburger.STUFFING_CHEESE = ...
-Hamburger.STUFFING_SALAD = ...
-Hamburger.STUFFING_POTATO = ...
-Hamburger.TOPPING_MAYO = ...
-Hamburger.TOPPING_SPICE = ...
+Hamburger.SIZE_SMALL = { price: 50, calories:20}
+Hamburger.SIZE_LARGE = { price: 100, calories: 40 }
+Hamburger.STUFFING_CHEESE = { price: 10, calories: 20 }
+Hamburger.STUFFING_SALAD = { price: 20, calories: 5 }
+Hamburger.STUFFING_POTATO = { price: 15, calories: 10}
+Hamburger.TOPPING_MAYO = { price: 20, calories:5}
+Hamburger.TOPPING_SPICE = { price: 15, calories:0}
 /**
 * Добавить добавку к гамбургеру. Можно добавить несколько
 *– при условии, что они разные.
@@ -36,7 +39,9 @@ Hamburger.TOPPING_SPICE = ...
 * @param topping     Тип добавки
 * @throws {HamburgerException}  При неправильном использовании
 */
-Hamburger.prototype.addTopping = function (topping) ...
+Hamburger.prototype.addTopping = function (topping) {
+  console.log()
+}
 /**
  * Убрать добавку – при условии, что она ранее была 
  * добавлена.
