@@ -1,0 +1,30 @@
+{
+  "img1": {
+    "alt": "Some alt",
+    "src": "images/max/1.jpg"
+  },
+  "img2": {
+    "alt": "Some alt",
+    "src": "images/max/2.jpg"
+  },
+  "img3": {
+    "alt": "Some alt",
+    "src": "images/max/3.jpg"
+  },
+  "img4": {
+    "alt": "Some alt",
+    "src": "images/max/4.jpg"
+  },
+  "img5": {
+    "alt": "Some alt",
+    "src": "images/max/4.jpg"
+  },
+  "img6": {
+    "alt": "Some alt",
+    "src": "images/max/4.jpg"
+  },
+  "img7": {
+    "alt": "Some alt",
+    "src": "images/max/45.jpg"
+  }
+}
