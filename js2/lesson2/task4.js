@@ -1,28 +1,63 @@
-const btnSuccess = document.getElementById('btn-success')
-const btnError = document.getElementById('btn-error');
-const message = document.getElementById('message');
 
-btnSuccess.addEventListener("click", () => {
-  getPathMaxImg('task3.json');
-});
-btnError.addEventListener("click", () => {
-  getPathMaxImg('task4.json');
-});
+class JsonReqest {
+  constructor(userSettings = {}) {
+    const settings = {
+      btnSuccess: "btn-success",
+      btnError: "btn-error",
+      message: "message",
+      messageSuccess: "Успешно!",
+      messageError: "Ошибка!",
+      pathSuccess: "task3.json",
+      pathError: "task4.json"
+    };
 
-function getPathMaxImg(pathJson) {
+    Object.assign(settings, userSettings);
 
-  fetch(pathJson)
-      .then(result => {
-        console.log(result.status);
-        if (result.status === 200) {
-          message.innerText = "Успешно!"
-        } else {
-          message.innerText = "Ошибка!"
-        }
-        return result.json();
-      })
-      .then(data => {
-        console.log(data)
-      })
-      .catch(error => console.log(error));
+    this.btnSuccess = settings.btnSuccess;
+    this.btnError = settings.btnError;
+    this.message = settings.message;
+    this.messageSuccess = settings.messageSuccess
+    this.messageError = settings.messageError;
+    this.pathSuccess = settings.pathSuccess;
+    this.pathError = settings.pathError;
+
+    const btnSuccess = document.getElementById(this.btnSuccess);
+    const btnError = document.getElementById(this.btnError);
+    this.message = document.getElementById(this.message);
+
+    btnSuccess.addEventListener("click", () => {
+      this.getPathMaxImg(this.pathSuccess);
+    });
+    btnError.addEventListener("click", () => {
+      this.getPathMaxImg(this.pathError);
+    });
+  }
+
+  getPathMaxImg(pathJson) {
+
+    fetch(pathJson)
+        .then(result => {
+          console.log(result.status);
+          if (result.status === 200) {
+            this.message.innerText = this.messageSuccess;
+            this.message.className = 'success';
+          } else {
+            this.message.innerText = this.messageError
+            this.message.className = 'error';
+          }
+          return result.json();
+        })
+        .then(data => {
+          console.log(data)
+        })
+        .catch(error => console.log(error));
+  }
 }
+
+const userSettings = {
+  messageSuccess: "Супер!",
+  pathError: "task5.json"
+};
+
+new JsonReqest(userSettings);
+

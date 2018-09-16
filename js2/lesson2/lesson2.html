@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="data"></div>
+<button id="getbtn">Async get tel</button>
+<script>
+    // const first = () => {
+    //     console.log('first');
+    //     second();
+    //     console.log('End of func');
+    // };
+    // const second = () => {
+    //     setTimeout(() => {
+    //         console.log('second');
+    //     }, 1500);
+    // };
+    // first();
+    // let getData = new Promise((resolve, reject) => {
+    //    setTimeout(() => {
+    //        resolve([532, 472, 856, 34]);
+    //    }, 1500);
+    // });
+    // let getJob = userID => {
+    //     return new Promise((resolve, reject) => {
+    //         setTimeout(ID => {
+    //             let userData = {
+    //                 name: 'Ann',
+    //                 job: 'full-stack developer'
+    //             };
+    //             resolve(`User ${ID} is ${userData.job}`);
+    //         }, 1500, userID);
+    //     })
+    // };
+    // getData
+    //     .then(ID => {
+    //         console.log(ID);
+    //         return getJob(ID[2]);
+    //     })
+    //     .then(job => console.log(job))
+    //     .catch(error => {
+    //         console.log(error);
+    //     });
+    // async function getJobAW() {
+    //     let ID = await getData;
+    //     console.log(ID);
+    //     let job = await getJob(ID[1]);
+    //     console.log(job);
+    //     return job;
+    // }
+    // getJobAW().then(job => console.log(job));
+
+
+    // AJAX
+
+    // let userJson = '{"name": "Anna", "age": 25, "isAdmin": true, "dateToday": "2018-09-14"}';
+    //
+    // console.log(userJson);
+    // let user = JSON.parse(userJson, (key, value) => {
+    //     console.log (key, value);
+    //     if (key === 'dateToday') {
+    //         value = new Date(value);
+    //     }
+    //     return value;
+    // });
+    // user.address = {
+    //     city: 'Saint Petersburg',
+    //     postalCode: '199999'
+    // };
+    // console.log(user);
+    // let jsonUser = JSON.stringify(user, ['age', 'address', 'city', 'postalCode'], 4);
+    // console.log(jsonUser);
+
+    window.onload = () => {
+        // document.getElementById('getbtn').addEventListener('click', () => {
+        //    let xhr = new XMLHttpRequest();
+        //    xhr.open('GET', 'gallery.json', true); // Async
+        //    xhr.onreadystatechange = () => {
+        //        console.log(xhr.readyState);
+        //        // 0 - запрос не инициализировани
+        //        // 1 - загрузка данных
+        //        // 2- запрос принят
+        //        // 3 - идет обмен
+        //        // 4 - запрос выполнен
+        //        if (xhr.readyState !== 4){
+        //            return;
+        //        }
+        //        if (xhr.status !== 200){
+        //            console.log("Error", xhr.status, xhr.statusText);
+        //        } else {
+        //            console.log('ok', xhr.responseText);
+        //            let obj = JSON.parse(xhr.responseText);
+        //            let block = document.getElementById('data');
+        //            block.innerHTML = `Number ${obj.number} (${obj.description})`;
+        //        }
+        //    };
+        //    xhr.send();
+        // });
+
+        //ES6
+        let btn = document.getElementById('getbtn');
+        let block = document.getElementById('data');
+        fetch('gallery.json')
+            .then(result => {
+                console.log(result);
+                return result.json();
+            })
+            .then(data => {
+                console.log(data);
+                btn.addEventListener('click', () => block.innerHTML = `Number ${data.number} (${data.description})`);
+            })
+            .catch(error => console.log(error));
+    }
+</script>
+</body>
+</html>
