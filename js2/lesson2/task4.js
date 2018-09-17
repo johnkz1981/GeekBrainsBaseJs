@@ -1,5 +1,20 @@
-
+/** Class для JSON запроса пути картинки. */
 class JsonReqest {
+  /**
+   * Конструтор принимает настройки пользователя и изменяет настройки по умолчанию.
+   * Объевляет HTML элементы и навешивает события.
+   * @param {Object} settings. Настройки по умолчанию.
+   * @param {string} btnSuccess. Название для класса btn success.
+   * @param {string} btnError. Название для класса btn error.
+   * @param {string} message. Название для класса вывода информации.
+   * @param {string} messageSuccess. Сообщение при успешном Ajax запросе.
+   * @param {string} messageError. Сообщение при ошибке Ajax запросе.
+   * @param {string} pathSuccess. Путь к файлу для JSON запроса.
+   * @param {string} pathError. Путь к файлу для JSON запроса(Несуществующий).
+   * @param {HTMLElement} btnSuccess. Btn для успешного вызова.
+   * @param {HTMLElement} btnError. Btn для ошибочного вызова.
+   * @param {HTMLElement} message. Div для сообщений вывода.
+   */
   constructor(userSettings = {}) {
     const settings = {
       btnSuccess: "btn-success",
@@ -33,6 +48,10 @@ class JsonReqest {
     });
   }
 
+  /**
+   * Метод для поиска пути болшой картинки в JSON файле в Ajax запросе
+   * @param {string} pathJson. Путь к JSON файлу
+   */
   getPathMaxImg(pathJson) {
 
     fetch(pathJson)
@@ -54,10 +73,19 @@ class JsonReqest {
   }
 }
 
+/**
+ * Объект принимает настройки пользователя и изменяет настройки по умолчанию.
+ * @property {string} btnSuccess. Название для класса btn success.
+ * @property {string} btnError. Название для класса btn error.
+ * @property {string} message. Название для класса вывода информации.
+ * @property {string} messageSuccess. Сообщение при успешном Ajax запросе.
+ * @property {string} messageError. Сообщение при ошибке Ajax запросе.
+ * @property {string} pathSuccess. Путь к файлу для JSON запроса.
+ * @property {string} pathError. Путь к файлу для JSON запроса(Несуществующий).
+ */
 const userSettings = {
   messageSuccess: "Супер!",
   pathError: "task5.json"
 };
 
 new JsonReqest(userSettings);
-
