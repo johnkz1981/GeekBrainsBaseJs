@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Форма</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-
+beta.3/css/bootstrap.min.css" integrity="sha384-
+Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <style>
+        .form-wrap {
+            margin: auto;
+            padding: 20px;
+            max-width: 800px
+        }
+
+        .form-control-danger {
+            border-color: #dc3545;
+        }
+    </style>
+</head>
+
+<body>
+<!--
+  Создать форму обратной связи с полями: Имя, Телефон, e-mail, текст, кнопка «Отправить».
+** - При нажатии на кнопку «Отправить» произвести валидацию полей следующим образом:
+
+- Имя содержит только буквы;
+
+** - Телефон подчиняется шаблону +7(000)000-0000;**
+
+** - E-mail выглядит как mymail@mail.ru, или my.mail@mail.ru, или my-mail@mail.ru**
+
+** - Текст произвольный;**
+** - В случае не прохождения валидации одним из полей необходимо выделять это поле красной рамкой и сообщать пользователю об ошибке.**
+-->
+<div class="form-wrap">
+    <form class="my-form" action="">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <input type="text" name="name" class="form-control" placeholder="Имя">
+                <div class="form-control-feedback text-danger name-danger"></div>
+            </div>
+            <div class="form-group col-md-6">
+                <input type="text" name="phone" class="form-control" placeholder="Телефон">
+                <div class="form-control-feedback text-danger phone-danger"></div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group has-danger col-md-6">
+                <input type="email" name="email" class="form-control" placeholder="E-mail">
+                <div class="form-control-feedback text-danger password-danger"></div>
+            </div>
+            <div class="form-group col-md-6">
+                <input type="text" name="text" class="form-control" placeholder="Text">
+                <div class="form-control-feedback text-danger password_repeat-danger"></div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Отправить</button>
+    </form>
+</div>
+<script src="task3.js"></script>
+</body>
+
+</html>
