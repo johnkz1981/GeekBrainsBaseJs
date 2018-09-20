@@ -69,9 +69,9 @@ class ValidationForm {
    * @returns {boolean}
    */
   isValidate() {
-    return this.isNameValidate(this.name[0]) ||
-        this.isPhoneValidate(this.phone[0]) ||
-        this.isEmailValidate(this.email[0]) ||
+    return this.isNameValidate(this.name[0]) &
+        this.isPhoneValidate(this.phone[0]) &
+        this.isEmailValidate(this.email[0]) &
         this.isTextValidate(this.content[0]);
   }
 
@@ -107,6 +107,6 @@ class ValidationForm {
     return dangerText[text];
   }
 }
-
+// Инициализация формы
 new ValidationForm();
 
