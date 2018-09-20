@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    'use strict';
+
+    //Синтаксис 1
+    // let regExp = new RegExp('регулярное выражение', 'флаги');
+
+    //Синтаксис 2
+    // let regExp = /регвыражение/флаги;
+    // Флаги
+    // i - без учета регистра
+    // g - глобальный поиск (по всей строке)
+    // m - многострочный поиск \n
+
+    // -1 - осутствие вхождением
+    // search возвращает индекс первого вхождения
+    // игнорирует флаг g
+    let str = 'Язык JavaScript назван JavaCode так из-за популярности языка Java';
+    let regExp = new RegExp('java', 'ig');
+    console.log(str.search(regExp));
+    let find = str.match(/java/ig);
+    console.log(find);
+
+    console.log('+7 (999)111-22-33'.replace('-', ':'));
+    console.log('+7 (999)111-22-33'.replace(/-/g, ':'));
+
+    let result;
+    let regExp2 = /java/ig;
+
+    console.log(`Начальный lastIndex ${regExp2.lastIndex}`);
+
+    while (result = regExp2.exec(str)) {
+        console.log(result);
+        console.log(`Текущий lastIndex ${regExp2.lastIndex}`);
+    }
+    console.log(`Конечный lastIndex ${regExp2.lastIndex}`);
+
+    // let name = 'Petrov, Ivan';
+    // console.log(name.replace(/([a-z]+), ([a-z]+)/i, 'Hello $&'));
+    //
+    // //Классы и наборы
+    // // \d - все цифры - [0-9]
+    // // \s - space, tab, \n
+    // // \w - [a-z0-9_]
+    // // Для криллицы [А-Яа-яЁё]
+    // // \bjava\b - гираницы слова
+    // // \D, \S, \W, \B     \D - [^0-9]
+    //
+    // console.log('Язык JS, PHPW6 и HTML5'.match(/\w{4}\d/g));
+    // // Квантификаторы
+    // // {m} - число повторений символа равно m
+    // // {m, n} - число повторений символа от m до n раз
+    // // {m, } - число повторений символа от m до бесконечности
+    // // {, m} - число повторений символа до m
+    // //Сокращения
+    // // + - {1, }
+    // // * - {0, }
+    // // ? - {0, 1}
+    //
+    // console.log('+7 (999)111-22-33'.match(/\d+/g).join(''));
+    // console.log('color colour colotr'.match(/colo[ut]?r/g));
+    //
+    // console.log('Chapter 4.2'.match(/\d\.\d/));
+    // console.log('Chapter 4d2'.match(/\d\.\d/));
+</script>
+</html>
