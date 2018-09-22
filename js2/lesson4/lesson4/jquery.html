@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .orange{
+            background: orange;
+            color: white;
+        }
+        .strong{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<p id="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum et, modi! Architecto at cum dignissimos eos facilis
+    fuga hic iure laborum provident quae, quo quos sapiente sed, sunt ullam voluptatem.</p>
+<p class="text1">Aspernatur at cupiditate ea error, exercitationem facere in itaque iusto nam nesciunt obcaecati perspiciatis quidem
+    quis, quod repudiandae tenetur totam voluptatum! Commodi iusto nisi quam repellendus sint! Error, quasi,
+    sapiente?</p>
+<p>Accusantium aperiam est minus nulla tempora? Aut beatae deleniti deserunt dolore dolorum ducimus excepturi ipsa
+    nihil, nisi, obcaecati officia quas qui quo, quod repellendus tempora veritatis vitae. Ad, obcaecati, rem?</p>
+<p class="text1">Adipisci architecto error eum harum maiores non, numquam perferendis perspiciatis quidem recusandae soluta
+    voluptates? Accusantium est exercitationem nobis numquam perspiciatis. Ab aut fugit iste iusto quae quo sed vitae
+    voluptates?</p>
+<p>Adipisci asperiores soluta unde? Delectus ducimus eius est excepturi harum, ipsa ipsum maxime nam quaerat quod
+    reprehenderit sapiente veniam voluptatem. Accusamus autem itaque laboriosam odit possimus quas recusandae tenetur
+    vitae?</p>
+<p class="text1">Ab blanditiis eos, minima nesciunt nulla numquam possimus praesentium quia quidem quo temporibus vel vitae!
+    Accusantium aliquam, consequatur dicta dignissimos distinctio facere in incidunt libero molestias quam repellendus
+    soluta totam?</p>
+<p>Consequatur cupiditate dicta dolorem ducimus ea, iure numquam perspiciatis rem sequi? Accusantium amet at consectetur
+    delectus dolore, eius eos esse est, fugiat harum iste necessitatibus nostrum officiis placeat sequi. Iure.</p>
+<hr>
+<div class="expand">
+    <h1>Lorem ipsum dolor sit.</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid animi atque aut incidunt iure, maiores nisi
+        quisquam ratione sequi ut.</p>
+    <p>Blanditiis consequatur dolorum ducimus eaque enim expedita harum illo molestiae nesciunt nisi nobis odio optio
+        perferendis reprehenderit ullam, vitae, voluptate!</p>
+</div>
+<hr>
+
+<button class="open">Open</button>
+<button class="close">Close</button>
+<button class="toggle">Toggle</button>
+<hr>
+<div class="dataAjax"></div>
+<button class="getData">Get users</button>
+
+<hr>
+<input type="tel" class="phone" placeholder="+7 (999) 111-22-33">
+<script src="jquery.min.js"></script>
+<script src="jquery.mask.min.js"></script>
+<script>
+    // console.log(jQuery, $);
+
+    // window.onload
+
+    // Сокращенный синтаксис
+    // IIFE
+    // (function ($){
+    //     $(() => {
+    //
+    //     });
+    // })(jQuery);
+
+    $(document).ready(() => {
+       $('p').addClass('orange');
+       $('#text').css('font-size', '1em');
+       // $('.text1').css({
+       //     fontSize: '1.5em',
+       //     color: 'green'
+       // });
+
+
+       //Выбор по номеру элемента 1 вариант
+        $('p').eq(3).addClass('strong');
+        //Вариант быстрее
+        //$('p:first').addClass('strong');
+        $('p:eq(4)').addClass('strong');
+
+        // Перебор
+        $('p').each((index, item) => {
+            console.log(index, item);
+            // item.className.add('some');
+            // $(item).addClass('some');
+        });
+
+        //Работа с событиями
+        let $block = $('.expand');
+        let $btnOpen = $('.open');
+        let $btnClose = $('.close');
+        let $btnToggle = $('.toggle');
+
+
+        // $btnOpen.click(() => {})
+        //         .keyup(() => {});
+        // $wrapper.on('click', '.some-img', func)
+        $btnClose.on('click', () => {
+            //$block.hide();
+            //$block.slideUp(1000); // 1000ms = 1s
+            $block.fadeOut(1000);
+        });
+        $btnOpen.on('click', () => {
+            //$block.show();
+            //$block.slideDown(1000);
+            $block.fadeIn(1000);
+        });
+        $btnToggle.on('click', () => {
+            //$block.toggle();
+            //$block.slideToggle(1000);
+            $block.fadeToggle(1000);
+        });
+
+        //AJAX
+        let $ajaxData = $('.dataAjax');
+        let $ajaxBtn = $('.getData');
+
+        $ajaxBtn.on('click', () => {
+            $.ajax({
+                url: 'user.php',
+                type: 'GET',
+                //async: false //синхронный запрос
+                dataType: 'json',
+                success: function(data) {
+                    for (let user of data){
+                        let $user = $(`<p>${user.name} - <strong>${user.tel}</strong></strong></p>`);
+                        $ajaxData.append($user);
+                    }
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        });
+
+        // Jquery Mask Plugin
+        $('.phone').mask('+7 (000) 000-00-00');
+    });
+</script>
+</body>
+</html>
