@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wrap{
+            position: relative;
+        }
+        .list{
+            position: absolute;
+            top: 19px;
+            border: 1px solid darkgray;
+            box-sizing: border-box;
+        }
+        .city {
+            margin: 0;
+            cursor: pointer;
+            padding: 10px 15px;
+            transition: all ease-in-out .3s;
+        }
+        .city:hover{
+            background: darkgray;
+        }
+    </style>
+</head>
+<body>
+<!--<select name="city" id="city"></select>-->
+    <div class="wrap">
+        <input type="text" name="city" id="city">
+    </div>
+</body>
+<script src="jquery-3.3.1.js"></script>
+<script>
+    // google.php?name=john&pass=1234
+    // $(document).ready(() => {
+    //    let list = 'russian-cities.json';
+    //    fetch(list)
+    //        .then(result => result.json())
+    //        .then(data => {
+    //            let $select = $('#city');
+    //            for (let city of data){
+    //                $select.append($(`<option value="${city.name}">${city.name}</option>`))
+    //            }
+    //        })
+    // });
+
+    // Task 3 (example 1)
+    // $(document).ready(() => {
+    //     let list = 'russian-cities.json';
+    //     fetch(list)
+    //         .then(result => result.json())
+    //         .then(data => {
+    //             let $select = $('#city');
+    //             $select.keyup(() => {
+    //                 $('.list').remove();
+    //                 if ($select.val().length > 2){
+    //                     let $block = $('<div/>', {
+    //                         class: 'list'
+    //                     });
+    //                     let search = new RegExp($select.val(), 'i');
+    //                     for (let city of data) {
+    //                         if (search.test(city.name)){
+    //                             $block.append($(`<p class="city">${city.name}</p>`));
+    //                         }
+    //                     }
+    //                     $block.appendTo($('.wrap'));
+    //                     $block.on('click', 'p', e => {
+    //                         $select.val(e.target.textContent);
+    //                         $('.list').remove();
+    //                     })
+    //                 }
+    //             })
+    //         })
+    // })
+
+    // Task 3 (datalist)
+    $(document).ready(() => {
+        let list = 'russian-cities.json';
+        fetch(list)
+            .then(result => result.json())
+            .then(data => {
+                let $select = $('#city');
+                let $cityData = $('<datalist/>', {
+                    id: 'city-list'
+                });
+                $('.wrap').append($cityData);
+                for (let city of data){
+                    $cityData.append(`<option value="${city.name}">${city.name}</option>`);
+                }
+                $select.keyup(() => {
+                    if ($select.val().length > 2) {
+                        $select.attr('list', $cityData.attr('id'));
+                    }
+                })
+            })
+    })
+</script>
+</html>

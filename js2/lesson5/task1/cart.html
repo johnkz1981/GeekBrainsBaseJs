@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #cart{
+            max-width: 300px;
+        }
+        .cart-items-wrap{
+            margin: 20px 0;
+        }
+        .cart-item{
+            display: grid;
+            grid-template-columns: 2fr 2fr 2fr 1fr;
+            grid-template-rows: 1fr;
+            padding: 10px 0;
+        }
+        .cart-item:not(:first-child){
+            border-top: 1px solid black;
+        }
+        .cart-summary{
+            text-align: right;
+        }
+        .product-quantity{
+            text-align: center;
+        }
+        .product-price{
+            text-align: right;
+        }
+        .product-remove{
+            text-align: right;
+            cursor: pointer;
+        }
+        #products {
+            display: flex;
+            justify-content: space-evenly;
+        }
+        p {
+            margin: 0 0 5px 0;
+        }
+        .product{
+            display: flex;
+            flex-direction: column;
+            width: 200px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        img {
+            max-width: 100%;
+            height: auto
+        }
+        .desc {
+            border: 1px solid #c0c0c040;
+            padding: 15px
+        }
+    </style>
+</head>
+<body>
+<div id="cart"></div>
+<hr>
+<div id="products"></div>
+<script src="jquery-3.3.1.js"></script>
+<script src="Cart.js"></script>
+<script src="Product.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

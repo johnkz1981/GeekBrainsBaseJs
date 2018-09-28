@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #module {
+            display: flex;
+            flex-direction: column;
+            width: 350px;
+            margin: 40px auto;
+        }
+
+        #user, select, button, #review {
+            padding: 7px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        #message {
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+<form id="module">
+    <input id="user" type="text" placeholder="User">
+    <textarea id="review" cols="30" rows="5" placeholder="Оставьте отзыв"></textarea>
+    <select name="" id="">
+        <option selected value="addReview.json">Добавить отзыв</option>
+        <option value="approveReview.json">Одобрить отзыв</option>
+        <option value="removeReview.json">Удалить отзыв</option>
+        <option value="review.list.json">Показать все отзывы</option>
+    </select>
+    <button type="submit">Отправить</button>
+    <div id="message">a,msdnbfamnsdf</div>
+</form>
+<script src="review.js"></script>
+<script src="index.js"></script>
+</body>
+</html>

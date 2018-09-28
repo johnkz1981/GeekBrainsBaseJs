@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .tab-wrap{
+            display: flex;
+            justify-content: flex-start;
+            list-style-type: none;
+        }
+        .tab{
+            padding: 15px 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rebeccapurple;
+            border-radius: 5px 5px 0 0;
+            text-decoration: none;
+            transition: all ease-in-out .4s;
+            color: rebeccapurple;
+        }
+        .vertical .tab{
+            border-radius: 5px 0 0 5px;
+        }
+        .wrapper{
+            max-width: 700px;
+            padding: 30px;
+        }
+        .itemContent{
+            display: none;
+            padding: 20px;
+            border: 1px solid rebeccapurple;
+            border-radius: 0 5px 5px 5px;
+            background: rebeccapurple;
+            color: white;
+        }
+
+        .itemContent.active{
+            display: block;
+        }
+        .tab.active, .tab:hover{
+            background: rebeccapurple;
+            color: white;
+        }
+        .vertical{
+            display: flex;
+            flex-direction: column;
+        }
+        .vertical-wrap{
+            display: flex;
+            justify-content: space-around;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <ul class="tab-wrap">
+        <li><a href="#one" class="tab active">Tab1</a></li>
+        <li><a href="#two" class="tab">Tab2</a></li>
+        <li><a href="#three" class="tab">Tab3</a></li>
+        <li><a href="#four" class="tab">Tab4</a></li>
+    </ul>
+    <div id="one" class="itemContent active">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Blanditiis eligendi fugiat iure laudantium minus odit quam, quibusdam sapiente totam.
+        Atque blanditiis debitis error, exercitationem ipsa minima molestiae mollitia numquam porro quidem
+        quos sed suscipit, veritatis! Accusamus adipisci, atque corporis cumque deserunt dolores dolorum ea eos
+        est et facere facilis fugit hic, illum iusto officiis perspiciatis porro quia reiciendis repudiandae,
+        ullam vel voluptates! Doloribus id necessitatibus repudiandae vero. Accusantium amet animi corporis
+        delectus eligendi, eos error eum ipsum iure iusto maiores nobis, quidem quisquam tenetur, voluptatum.
+        Aliquid blanditiis facere fugiat harum incidunt ipsa libero, maxime nihil non recusandae repudiandae
+        voluptatem voluptates!</div>
+    <div id="two" class="itemContent">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores
+        dignissimos dolorem dolores ipsam, iure maxime odio recusandae tempore veritatis voluptatum?
+        Amet facilis fugit natus optio quos! Consectetur consequuntur, in neque optio perferendis recusandae?
+        Accusantium, adipisci, deserunt iste iure laborum molestias nam obcaecati optio perspiciatis quasi,
+        quibusdam quisquam ratione repudiandae saepe?</div>
+    <div id="three" class="itemContent">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        A accusamus accusantium assumenda corporis deserunt, doloremque enim impedit ipsam laudantium n
+        eque numquam pariatur possimus provident ratione voluptate! Cumque maiores maxime numquam praesentium
+        quasi, qui reiciendis saepe veniam voluptates voluptatibus. Ad culpa deserunt ipsum sequi unde.
+        A ab accusantium alias animi blanditiis cupiditate deleniti dicta distinctio, fuga impedit ipsa
+        laboriosam minima quis quod sed tempore temporibus? Necessitatibus, quasi repellendus.
+        Dignissimos iusto maiores maxime officia placeat repellat veniam? Accusantium ad aliquid consequuntur
+        cum doloribus eius enim esse ex, iste labore modi officia officiis perspiciatis provident
+        quam reprehenderit veritatis? Aspernatur assumenda at commodi dignissimos illum, nostrum nulla q
+        uae quam quas reiciendis repudiandae, saepe sequi tempore? Aperiam cum doloremque inventore iste
+        laudantium nulla possimus qui!</div>
+    <div id="four" class="itemContent">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Dolore ducimus illo ipsam ipsum iste iusto officia, praesentium quibusdam quos repudiandae
+        saepe soluta velit voluptatibus. At dicta ea molestias natus odit.</div>
+</div>
+<div class="wrapper vertical-wrap">
+    <ul class="tab-wrap vertical">
+        <li><a href="#one1" class="tab active">Tab1</a></li>
+        <li><a href="#two1" class="tab">Tab2</a></li>
+        <li><a href="#three1" class="tab">Tab3</a></li>
+        <li><a href="#four1" class="tab">Tab4</a></li>
+    </ul>
+    <div id="one1" class="itemContent active">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Blanditiis eligendi fugiat iure laudantium minus odit quam, quibusdam sapiente totam.
+        Atque blanditiis debitis error, exercitationem ipsa minima molestiae mollitia numquam porro quidem
+        quos sed suscipit, veritatis! Accusamus adipisci, atque corporis cumque deserunt dolores dolorum ea eos
+        est et facere facilis fugit hic, illum iusto officiis perspiciatis porro quia reiciendis repudiandae,
+        ullam vel voluptates! Doloribus id necessitatibus repudiandae vero. Accusantium amet animi corporis
+        delectus eligendi, eos error eum ipsum iure iusto maiores nobis, quidem quisquam tenetur, voluptatum.
+        Aliquid blanditiis facere fugiat harum incidunt ipsa libero, maxime nihil non recusandae repudiandae
+        voluptatem voluptates!</div>
+    <div id="two1" class="itemContent">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores
+        dignissimos dolorem dolores ipsam, iure maxime odio recusandae tempore veritatis voluptatum?
+        Amet facilis fugit natus optio quos! Consectetur consequuntur, in neque optio perferendis recusandae?
+        Accusantium, adipisci, deserunt iste iure laborum molestias nam obcaecati optio perspiciatis quasi,
+        quibusdam quisquam ratione repudiandae saepe?</div>
+    <div id="three1" class="itemContent">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        A accusamus accusantium assumenda corporis deserunt, doloremque enim impedit ipsam laudantium n
+        eque numquam pariatur possimus provident ratione voluptate! Cumque maiores maxime numquam praesentium
+        quasi, qui reiciendis saepe veniam voluptates voluptatibus. Ad culpa deserunt ipsum sequi unde.
+        A ab accusantium alias animi blanditiis cupiditate deleniti dicta distinctio, fuga impedit ipsa
+        laboriosam minima quis quod sed tempore temporibus? Necessitatibus, quasi repellendus.
+        Dignissimos iusto maiores maxime officia placeat repellat veniam? Accusantium ad aliquid consequuntur
+        cum doloribus eius enim esse ex, iste labore modi officia officiis perspiciatis provident
+        quam reprehenderit veritatis? Aspernatur assumenda at commodi dignissimos illum, nostrum nulla q
+        uae quam quas reiciendis repudiandae, saepe sequi tempore? Aperiam cum doloremque inventore iste
+        laudantium nulla possimus qui!</div>
+    <div id="four1" class="itemContent">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Dolore ducimus illo ipsam ipsum iste iusto officia, praesentium quibusdam quos repudiandae
+        saepe soluta velit voluptatibus. At dicta ea molestias natus odit.</div>
+</div>
+<script src="jquery-3.3.1.js"></script>
+<script>
+    $(document).ready(() => {
+        $('.tab-wrap').on('click', '.tab:not(.active)', e => {
+            e.preventDefault();
+            $(e.target).closest('.tab-wrap').find('.tab.active').removeClass('active');
+            $(e.target).addClass('active')
+                       .closest('.wrapper')
+                       .find('.itemContent')
+                       .hide();
+            $($(e.target).attr('href')).show();
+        });
+    })
+</script>
+</body>
+</html>
