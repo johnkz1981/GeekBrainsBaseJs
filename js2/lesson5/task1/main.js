@@ -7,4 +7,6 @@ $(document).ready(() => {
   $('.buyBtn').click(e => {
     mycart._addProduct(e.target);
   });
+
+  new Draggable();
 });
