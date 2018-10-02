@@ -8,5 +8,17 @@ $(document).ready(() => {
     mycart._addProduct(e.target);
   });
 
-  new Draggable();
+  const dragManager = new DragManager(mycart);
+
+  dragManager.onDragCancel = function(dragObject) {
+    dragObject.avatar.rollback();
+  };
+
+  dragManager.onDragEnd = function(dragObject, dropElem) {
+    dragObject.elem.style.display = 'none';
+    dropElem.classList.add('computer-smile');
+    setTimeout(function() {
+      dropElem.classList.remove('computer-smile');
+    }, 200);
+  };
 });

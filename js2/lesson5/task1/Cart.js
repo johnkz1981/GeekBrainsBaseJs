@@ -12,7 +12,7 @@ class Cart {
 
   _render() {
     let $cartItemsDiv = $('<div/>', {
-      class: 'cart-items-wrap'
+      class: 'cart-items-wrap computer droppable'
     });
     let $totalAmount = $('<div/>', {
       class: 'cart-summary sum-amount'
@@ -92,7 +92,6 @@ class Cart {
   }
 
   _remove(element) {
-    //TODO: добавить удаление товара
 
     const productId = +$(element.parentNode).data('product');
     const find = this.cartItems.find(product => product.id_product === productId);

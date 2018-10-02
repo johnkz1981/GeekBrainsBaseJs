@@ -10,7 +10,7 @@ class Product {
 
   _render(container) {
     let $wrapper = $('<div/>', {
-      class: 'product',
+      class: 'product draggable',
       'data-id': this.id,
       'data-price': this.price,
       'data-name': this.title,
